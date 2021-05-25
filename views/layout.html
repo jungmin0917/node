@@ -2,6 +2,8 @@
 <html lang='ko'>
 <head>
 	<meta charset='utf-8'>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 	<link rel='stylesheet' type='text/css' href="/css/reset.css">
 	<link rel='stylesheet' type='text/css' href="/css/style.css">
 
@@ -14,7 +16,14 @@
 
 	<title>이력서</title>
 </head>
-<body>
+<body
+	{% if addClass %}
+	class = '{{ addClass }}'
+	{% endif %}
+>
+	{% block top %}
+
+	{% endblock %}
 
 	{% block content %}
 

@@ -1,8 +1,12 @@
 {% extends "../layout.html" %}
 
 {% block content %}
+
 <form method='post' action='/member/login' target='ifrm_hidden' autocomplete='off' class='member_login_form'>
-	<div class='login_title'>로그인</div>
+	<div class='login_title'>관리자 로그인</div>
+	<div class='links'>
+		<a href="/member/join">관리자 등록 요청 페이지로</a>
+	</div>
 	<dl>
 		<dt>아이디</dt>
 		<dd>
@@ -15,6 +19,7 @@
 			<input type='password' name='memPw'>
 		</dd>
 	</dl>
-	<input type='submit' value='로그인하기'>
+	<input type='submit' value='관리자 로그인하기' class='btn1'>
 </form>
+
 {% endblock %}
