@@ -16,19 +16,24 @@ const member = {
 	*	@return Boolean true/false
 	*/
 	join : async function(memId, memPw){
-		const hashed_pw = await bcrypt.hash(memPw, 10);
+		try{
+			const hashed_pw = await bcrypt.hash(memPw, 10);
 
-		const sql = `INSERT INTO member (memId, memPw) VALUES (:memId, :memPw)`;
+			const sql = `INSERT INTO member (memId, memPw) VALUES (:memId, :memPw)`;
 
-		const result = await sequelize.query(sql, {
-			replacements : {
-				memId,
-				memPw : hashed_pw,
-			},
-			type : QueryTypes.INSERT,
-		});
+			await sequelize.query(sql, {
+				replacements : {
+					memId,
+					memPw : hashed_pw,
+				},
+				type : QueryTypes.INSERT,
+			});
 
-		await console.log(result);
+			return true;
+		}catch(err){
+			console.error(err);
+			return false;
+		}
 	},
 };
 

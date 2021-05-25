@@ -14,5 +14,5 @@ module.exports.joinValidator = function(req, res, next){
 		return alert('비밀번호를 입력해주세요', res);
 	}
 
-	next(req, res, next); // 다음 미들웨어로 이동 (return $this로 넘기는 것과 비슷)
+	next(); // 다음 미들웨어로 이동 (return $this로 넘기는 것과 비슷)
 };
