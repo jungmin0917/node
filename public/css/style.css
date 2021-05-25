@@ -1,2 +1,45 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'Eulyoo1945-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html{
+    font-family: 'Eulyoo1945-SemiBold', sans-serif;
+    font-size:15px;
+}
+
+dl{
+	display:table;
+	width:100%;
+}
+
+dt{
+	display:table-cell;
+	width:20%;
+}
+
+dd{
+	display:table-cell;
+	width:80%;
+}
+
+dd input{
+	width:100%;
+    font-family: 'Eulyoo1945-SemiBold', sans-serif;
+    font-size:1.2rem;
+}
+
+.member_join_form,
+.member_login_form{
+	font-size:1.5rem;
+	padding:20px;
+}
+
+.join_title,
+.login_title{
+	margin-bottom:20px;
+}
