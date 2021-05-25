@@ -113,3 +113,81 @@ dd input{
 .admin_page .top_nav .inner{
 	text-align:right;
 }
+
+.admin_page .top_nav a{
+	margin:0 10px;
+}
+
+.admin_page .container{
+	display:table;
+	padding:50px 20px;
+}
+
+.admin_page .container .nav{
+	display:table-cell;
+	vertical-align:top;
+	width:260px;
+	position:relative;
+}
+
+.admin_page .container .profile{
+	display:table-cell;
+	vertical-align:top;
+}
+
+/** admin/_nav.html 관련 */
+.admin_page .floating_box{
+	width:240px;
+	position:absolute;
+	right:0;
+}
+
+.admin_page .selection_box{
+	background-color:#fff;
+	padding:15px;
+	margin-bottom:10px;
+	border:1px solid #eee;
+}
+
+.admin_page .selection_box li{
+	margin-bottom:15px;
+}
+
+.admin_page .selection_box li:last-child{
+	margin:0;
+}
+
+.admin_page .selection_box .title{
+	font-size:16px;
+	color:#999;
+	padding-bottom:15px;
+	border-bottom:1px solid #eee;
+	margin-bottom:15px;
+}
+
+.admin_page .floating_box .btns .btn{
+	display:block;
+	height:50px;
+	text-align:center;
+	line-height:50px;
+	background-color:#fff;
+	color:#333;
+	font-size:15px;
+}
+
+.admin_page .floating_box .btn.save{
+	background-color:#3399ff;
+	color:#fff;
+}
+
+/** admin/_profile.html 관련 */
+
+.admin_page .resume_title input[type='text']{
+    font-family: 'Eulyoo1945-SemiBold', sans-serif;
+    font-size:2rem;
+	height:80px;
+	padding:0 28px;
+	letter-spacing:-1px;
+	color:#333;
+	display:block;
+}
