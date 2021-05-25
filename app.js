@@ -23,6 +23,25 @@ nunjucks.configure("views", {
 });
 
 app.use(morgan('dev'));
+app.use(methodOverride("_method"));
+
+// body-parser 설정
+app.use(express.json());
+app.use(express.urlencoded({
+	extended : false,
+}));
+
+// 정적 파일 설정
+app.use("/", express.static(path.join(__dirname, 'public')));
+
+// cookie-parser 설정
+app.use(cookieParser(process.env.cookie_secret));
+
+// express-session 설정
+app.use(session({
+	resave: false,
+	saveUninitialized : false, // 세션 키값이 자동 생성되게?
+}));
 
 // 없는 페이지 처리 미들웨어
 app.use(function(req, res, next){
