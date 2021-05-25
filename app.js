@@ -40,7 +40,12 @@ app.use(cookieParser(process.env.cookie_secret));
 // express-session 설정
 app.use(session({
 	resave: false,
-	saveUninitialized : false, // 세션 키값이 자동 생성되게?
+	saveUninitialized : false, // 세션 값을 지정하지 않아도 초기화됨
+	cookie : {
+		httpOnly : true, // 오직 서버 내에서만 바꿀 수 있음
+		secure : false, // https 쓸지 안 쓸지
+	},
+	name : 'hjmsession',
 }));
 
 // 없는 페이지 처리 미들웨어
