@@ -1,3 +1,4 @@
+/* 기본 모듈 등록부 */
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
@@ -8,6 +9,11 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 
 const session = require('express-session');
+
+const { sequelize } = require("./models/index"); // .js, .json은 생략 가능
+
+/* 라우터 모듈 등록부 */
+const memberRouter = require('./routes/member');
 
 const app = express();
 
@@ -21,6 +27,17 @@ nunjucks.configure("views", {
 	express : app,
 	watch : true, // 실시간 갱신
 });
+
+// DB 연결 (promise 비동기 처리 방식 이용)
+sequelize.sync({
+	force : false,
+})
+	.then(function(){
+		console.log("데이터베이스 연결 성공");
+	})
+	.catch(function(err){
+		console.error(err);
+	});
 
 app.use(morgan('dev'));
 app.use(methodOverride("_method"));
@@ -48,6 +65,9 @@ app.use(session({
 	name : 'hjmsession',
 }));
 
+/* 라우팅 */
+app.use("/member", memberRouter);
+
 // 없는 페이지 처리 미들웨어
 app.use(function(req, res, next){
 	const error = new Error(`${req.method} ${req.url}은 없는 페이지입니다.`);
@@ -65,7 +85,7 @@ app.use(function(err, req, res, next){
 })
 
 
-
+// 서버 포트 설정
 app.listen(app.get('port'), function(){
 	console.log(app.get('port'), '번 포트에서 대기 중');
 });
