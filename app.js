@@ -57,7 +57,7 @@ app.use(cookieParser(process.env.cookie_secret));
 // express-session 설정
 app.use(session({
 	resave: false,
-	saveUninitialized : false, // 세션 값을 지정하지 않아도 초기화됨
+	saveUninitialized : true, // 세션 값을 지정하지 않아도 초기화됨
 	cookie : {
 		httpOnly : true, // 오직 서버 내에서만 바꿀 수 있음
 		secure : false, // https 쓸지 안 쓸지

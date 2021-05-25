@@ -38,11 +38,32 @@ router.route("/login")
 			res.render("member/login");
 		})
 		// 로그인 DB 처리
-		.post(function(Req, res, next){
+		.post(joinValidator, async function(req, res, next){
+			try{
+				const result = await member.login(req.body.memId, req.body.memPw, req);
 
+				if(result){ // 성공한 경우
+					return go("/admin", res, "parent");
+				}
+
+			}catch(err){
+				console.error(err);
+				next(err);
+			}
+
+			return alert('로그인 실패', res);
 		});
 
 /* 로그인 E */
+
+/* 로그아웃 S */
+
+router.get("/logout", function(req, res, next){
+	req.session.destroy();
+	res.redirect("/member/login");
+});
+
+/* 로그아웃 E */
 
 module.exports = router;
 
