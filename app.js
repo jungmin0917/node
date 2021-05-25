@@ -12,8 +12,11 @@ const session = require('express-session');
 
 const { sequelize } = require("./models/index"); // .js, .json은 생략 가능
 
+const { loginSession } = require("./middlewares/login_session");
+
 /* 라우터 모듈 등록부 */
 const memberRouter = require('./routes/member');
+const adminRouter = require('./routes/admin');
 
 const app = express();
 
@@ -65,8 +68,11 @@ app.use(session({
 	name : 'hjmsession',
 }));
 
+app.use(loginSession);
+
 /* 라우팅 */
 app.use("/member", memberRouter);
+app.use("/admin", adminRouter);
 
 // 없는 페이지 처리 미들웨어
 app.use(function(req, res, next){
